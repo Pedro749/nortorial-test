@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Global Configuration Override
  *
@@ -12,5 +13,11 @@
  */
 
 return [
-    // ...
+    'db' => [
+        'driver' => 'Pdo_Mysql',
+        'host' => 'localhost',
+        'username' => 'root',
+        'password' => 'password',
+        'database' => 'zf3_nortorial',
+    ],
 ];

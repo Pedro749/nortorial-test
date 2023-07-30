@@ -14,6 +14,11 @@ abstract class AbstractCoreModelTable
         $this->tableGateway = $tableGateway;
     }
 
+    public function getAll()
+    {
+        return $this->tableGateway->select();
+    }
+
     public function getBy(array $params)
     {
         $rowset = $this->tableGateway->select($params);

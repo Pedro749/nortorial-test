@@ -2,8 +2,8 @@
 
 namespace User\Model;
 
-use Core\Model\AbstractCoreModelTable;
 use Zend\Crypt\Password\Bcrypt;
+use Core\Model\AbstractCoreModelTable;
 
 class UserTable extends AbstractCoreModelTable
 {

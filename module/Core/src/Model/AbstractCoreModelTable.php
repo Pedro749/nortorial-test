@@ -28,7 +28,6 @@ abstract class AbstractCoreModelTable
 
     public function save(array $data)
     {
-
         unset(
             $data['csrf'],
             $data['verifyPassword']

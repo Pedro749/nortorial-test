@@ -2,11 +2,11 @@
 
 namespace User\Controller\Factory;
 
-use Interop\Container\ContainerInterface;
-use User\Controller\IndexController;
 use User\Form\UserForm;
 use User\Model\UserTable;
 use Zend\Db\Adapter\Adapter;
+use User\Controller\IndexController;
+use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 class IndexControllerFactory implements FactoryInterface

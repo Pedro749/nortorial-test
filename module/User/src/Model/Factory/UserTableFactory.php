@@ -3,11 +3,11 @@
 namespace User\Model\Factory;
 
 use User\Model\User;
+use User\Model\UserTable;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
-use Interop\Container\ContainerInterface;
-use User\Model\UserTable;
 use Zend\Db\TableGateway\TableGateway;
+use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 class UserTableFactory implements FactoryInterface

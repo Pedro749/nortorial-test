@@ -2,6 +2,7 @@
 
 namespace Auth\Authentication;
 
+use Exception;
 use User\Model\UserTable;
 use Zend\Authentication\Result;
 use Zend\Crypt\Password\Bcrypt;
@@ -34,16 +35,22 @@ class Adapter implements AdapterInterface
 
     public function authenticate()
     {
-        if ($user = $this->userTable->getUserByEmail($this->email)) {
-            $bcrypt = new Bcrypt();
+        try {
+            if ($user = $this->userTable->getUserByEmail($this->email)) {
+                $bcrypt = new Bcrypt();
 
-            if ($bcrypt->verify($this->password, $user->password)) {
-                return new Result(Result::SUCCESS, $user);
+                if ($bcrypt->verify($this->password, $user->password)) {
+                    return new Result(Result::SUCCESS, $user);
+                }
             }
+        } catch (Exception $exception) {
+            return new Result(Result::FAILURE_CREDENTIAL_INVALID, null, [
+                'Login ou senha incorretos!'
+            ]);
         }
 
         return new Result(Result::FAILURE_CREDENTIAL_INVALID, null, [
-            'Login ou senha inválido!'
+            'Login ou senha incorretos!'
         ]);
     }
 }

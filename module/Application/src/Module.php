@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
  * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
@@ -7,6 +8,9 @@
 
 namespace Application;
 
+use Zend\EventManager\EventInterface;
+use Application\Listener\CheckAuthenticationListener;
+
 class Module
 {
     const VERSION = '3.1.4dev';
@@ -14,5 +18,12 @@ class Module
     public function getConfig()
     {
         return include __DIR__ . '/../config/module.config.php';
+    }
+
+    public function onBootstrap(EventInterface $e)
+    {
+        $eventManager = $e->getApplication()->getEventManager();
+
+        (new CheckAuthenticationListener())->attach($eventManager, 99);
     }
 }

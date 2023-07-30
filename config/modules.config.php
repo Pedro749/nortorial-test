@@ -33,5 +33,6 @@ return [
     'Application',
     'Core',
     'User',
-    'Auth'
+    'Auth',
+    'Client'
 ];

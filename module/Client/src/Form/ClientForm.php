@@ -7,6 +7,7 @@ use Zend\Form\Element\Text;
 use Zend\Form\Element\Csrf;
 use  Zend\Db\Adapter\Adapter;
 use Client\Form\Filter\ClientFilter;
+use Zend\Form\Element\Hidden;
 
 class ClientForm extends Form
 {
@@ -17,6 +18,10 @@ class ClientForm extends Form
         $this->setInputFilter(new ClientFilter($adapter));
 
         $this->setAttributes(['method' => 'POST']);
+
+        $id = new Hidden('id');
+
+        $this->add($id);
 
         $name = new Text('name');
         $name->setLabel('Nome completo');

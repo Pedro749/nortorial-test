@@ -12,24 +12,16 @@ return [
     'router' => [
         'routes' => [
             'client' => [
-                'type' => Literal::class,
+                'type' => Segment::class,
                 'options' => [
-                    'route' => '/client',
+                    'route' => '/client[/:action[/:id]]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action' => 'index',
                     ],
-                ],
-                'my_terminate' => true,
-                'child_routes' => [
-                    'default' => [
-                        'type' => Segment::class,
-                        'options' => [
-                            'route' => '[/:action]',
-                            'contraints' => [
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ],
-                        ],
+                    'contraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '\d+'
                     ],
                 ],
             ],
@@ -42,7 +34,8 @@ return [
     ],
     'view_manager' => [
         'template_map' => [
-            'client/' => __DIR__ . '/../view/client/index/index.phtml'
+            'client/' => __DIR__ . '/../view/client/index/index.phtml',
+            'client/edit' => __DIR__ . '/../view/client/index/edit.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

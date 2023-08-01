@@ -19,8 +19,8 @@ class ClientForm extends Form
         $this->setAttributes(['method' => 'POST']);
 
         $name = new Text('name');
+        $name->setLabel('Nome completo');
         $name->setAttributes([
-            'placeholder' => 'Nome completo',
             'class' => 'form-control',
             'maxlength' => 120
         ]);
@@ -28,8 +28,8 @@ class ClientForm extends Form
         $this->add($name);
 
         $cpf_cnpj = new Text('cpf_cnpj');
+        $cpf_cnpj->setLabel('CPF/CNPJ');
         $cpf_cnpj->setAttributes([
-            'placeholder' => 'CPF/CNPJ',
             'class' => 'form-control',
             'maxlength' => 20
         ]);
@@ -37,8 +37,8 @@ class ClientForm extends Form
         $this->add($cpf_cnpj);
 
         $rg_ie = new Text('rg_ie');
+        $rg_ie->setLabel('RG/Inscrição Estadual');
         $rg_ie->setAttributes([
-            'placeholder' => 'RG/Inscrição Estadual',
             'class' => 'form-control',
             'maxlength' => 20
         ]);
@@ -46,8 +46,8 @@ class ClientForm extends Form
         $this->add($rg_ie);
 
         $uf = new Text('uf');
+        $uf->setLabel('Estado');
         $uf->setAttributes([
-            'placeholder' => 'Estado',
             'class' => 'form-control',
             'maxlength' => 120
         ]);
@@ -55,8 +55,8 @@ class ClientForm extends Form
         $this->add($uf);
 
         $city = new Text('city');
+        $city->setLabel('Cidade');
         $city->setAttributes([
-            'placeholder' => 'Cidade',
             'class' => 'form-control',
             'maxlength' => 120
         ]);
@@ -64,8 +64,8 @@ class ClientForm extends Form
         $this->add($city);
 
         $address = new Text('address');
+        $address->setLabel('Endereço');
         $address->setAttributes([
-            'placeholder' => 'Endereço',
             'class' => 'form-control',
             'maxlength' => 255
         ]);

@@ -46,49 +46,45 @@ class ClientFilter extends InputFilter
         $this->add($cpf_cnpj);
 
         $rg_ie = new Input('rg_ie');
-        $rg_ie->setRequired(true)
+        $rg_ie->setRequired(false)
             ->getFilterChain()
             ->attachByName('stringtrim')
             ->attachByName('StripTags');
 
         $rg_ie->getValidatorChain()
-            ->attach(new NotEmpty())
             ->attach(new StringLength(['max' => 120]));
 
         $this->add($rg_ie);
 
         $uf = new Input('uf');
-        $uf->setRequired(true)
+        $uf->setRequired(false)
             ->getFilterChain()
             ->attachByName('stringtrim')
             ->attachByName('StripTags');
 
         $uf->getValidatorChain()
-            ->attach(new NotEmpty())
             ->attach(new StringLength(['max' => 120]));
 
         $this->add($uf);
 
         $city = new Input('city');
-        $city->setRequired(true)
+        $city->setRequired(false)
             ->getFilterChain()
             ->attachByName('stringtrim')
             ->attachByName('StripTags');
 
         $city->getValidatorChain()
-            ->attach(new NotEmpty())
             ->attach(new StringLength(['max' => 120]));
 
         $this->add($city);
 
         $address = new Input('address');
-        $address->setRequired(true)
+        $address->setRequired(false)
             ->getFilterChain()
             ->attachByName('stringtrim')
             ->attachByName('StripTags');
 
         $address->getValidatorChain()
-            ->attach(new NotEmpty())
             ->attach(new StringLength(['max' => 120]));
 
         $this->add($address);

@@ -25,10 +25,11 @@ class IndexController extends AbstractActionController
 
         if ($this->getRequest()->isPost()) {
             $this->userForm->setData($this->getRequest()->getPost());
+
             if ($this->userForm->isValid()) {
                 $data = $this->userForm->getData();
                 try {
-                    $user = $this->userTable->save($data);
+                    $this->userTable->save($data);
                     $this->flashMessenger()->addSuccessMessage(
                         sprintf(
                             'Usuário cadastrado!'

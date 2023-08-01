@@ -18,7 +18,7 @@ return [
     'view_helper_config' => [
         'form_element_errors' => [
             'message_open_format' => '<ul class="list-unstyled"><li class="help-block text-danger ml-1">',
-            'message_separator_string' => '</li><li class="help-block">',
+            'message_separator_string' => '</li><li class="help-block text-danger">',
             'message_close_string' => '</li></ul>',
         ],
         'flashmessenger' => [

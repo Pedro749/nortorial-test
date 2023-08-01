@@ -39,7 +39,7 @@ class IndexController extends AbstractActionController
             if ($this->clientForm->isValid()) {
                 $data = $this->clientForm->getData();
                 try {
-                    $user = $this->clientTable->save($data);
+                    $this->clientTable->save($data);
                     $this->flashMessenger()->addSuccessMessage(
                         sprintf(
                             'Cliente cadastrado!'
@@ -54,6 +54,7 @@ class IndexController extends AbstractActionController
                 return $this->redirect()->refresh();
             }
         }
+
 
         return new ViewModel([
             'form' => $this->clientForm->prepare()

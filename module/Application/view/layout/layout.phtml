@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <?= $this->headTitle('Nortorial')->setSeparator(' - ')->setAutoEscape(false) ?>
+    <?= $this->headTitle('Nortorial - Clientes')->setSeparator(' - ')->setAutoEscape(false) ?>
 
     <?= $this->headMeta()
         ->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -42,7 +42,7 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" href="#">Clientes</a>
+                            <a class="nav-link active text-white" href="<?= $this->url('client/default'); ?>">Clientes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">Protocolos</a>

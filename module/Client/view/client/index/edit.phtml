@@ -14,48 +14,40 @@
 
                     <?= $this->form()->openTag($this->form); ?>
 
-                    <div class="form-group <?= $this->formElementErrors($this->form->get('name')) ? 'has-error' : ''; ?> has-feedback">
+                    <div class="form-group">
                         <?= $this->formLabel($this->form->get('name')); ?>
                         <?= $this->formText($this->form->get('name')); ?>
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         <?= $this->formElementErrors($this->form->get('name')); ?>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col <?= $this->formElementErrors($this->form->get('cpf_cnpj')) ? 'has-error' : ''; ?> has-feedback">
+                        <div class="form-group col">
                             <?= $this->formLabel($this->form->get('cpf_cnpj')); ?>
                             <?= $this->formText($this->form->get('cpf_cnpj')); ?>
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             <?= $this->formElementErrors($this->form->get('cpf_cnpj')); ?>
                         </div>
-                        <div class="form-group col  <?= $this->formElementErrors($this->form->get('rg_ie')) ? 'has-error' : ''; ?> has-feedback">
+                        <div class="form-group col">
                             <?= $this->formLabel($this->form->get('rg_ie')); ?>
                             <?= $this->formText($this->form->get('rg_ie')); ?>
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             <?= $this->formElementErrors($this->form->get('rg_ie')); ?>
                         </div>
-
                     </div>
                     <div class="form-row">
-                        <div class="form-group col <?= $this->formElementErrors($this->form->get('uf')) ? 'has-error' : ''; ?> has-feedback">
+                        <div class="form-group col">
                             <?= $this->formLabel($this->form->get('uf')); ?>
                             <?= $this->formText($this->form->get('uf')); ?>
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             <?= $this->formElementErrors($this->form->get('uf')); ?>
                         </div>
-                        <div class="form-group col <?= $this->formElementErrors($this->form->get('city')) ? 'has-error' : ''; ?> has-feedback">
+                        <div class="form-group col">
                             <?= $this->formLabel($this->form->get('city')); ?>
                             <?= $this->formText($this->form->get('city')); ?>
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             <?= $this->formElementErrors($this->form->get('city')); ?>
                         </div>
                     </div>
-                    <div class="form-group <?= $this->formElementErrors($this->form->get('address')) ? 'has-error' : ''; ?> has-feedback">
+                    <div class="form-group">
                         <?= $this->formLabel($this->form->get('address')); ?>
                         <?= $this->formText($this->form->get('address')); ?>
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         <?= $this->formElementErrors($this->form->get('address')); ?>
                     </div>
-
                     <?= $this->formHidden($this->form->get('csrf')); ?>
                     <?= $this->formHidden($this->form->get('id')); ?>
                     <div class="form-group">

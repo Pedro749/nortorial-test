@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card ">
                 <div class="card-body">
                     <h3 class="card-title mb-4 text-center">Login</h3>
                     <?php
@@ -10,15 +10,14 @@
                     ?>
 
                     <?php echo $this->form()->openTag($this->form); ?>
-                    <div class="form-group<?php echo $this->formElementErrors($this->form->get('email')) ? ' has-error' : ''; ?> has-feedback">
+                    <div class="form-group <?= $this->formElementErrors($this->form->get('email')) ? ' has-error' : ''; ?> has-feedback">
+                        <?= $this->formLabel($this->form->get('email')); ?>
                         <?php echo $this->formEmail($this->form->get('email')); ?>
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         <?php echo $this->formElementErrors($this->form->get('email')); ?>
                     </div>
-
-                    <div class="form-group<?php echo $this->formElementErrors($this->form->get('password')) ? ' has-error' : ''; ?> has-feedback">
+                    <div class="form-group <?= $this->formElementErrors($this->form->get('password')) ? ' has-error' : ''; ?> has-feedback">
+                        <?= $this->formLabel($this->form->get('password')); ?>
                         <?php echo $this->formPassword($this->form->get('password')); ?>
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         <?php echo $this->formElementErrors($this->form->get('password')); ?>
                     </div>
                     <?php echo $this->formHidden($this->form->get('csrf'));  ?>

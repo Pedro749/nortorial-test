@@ -11,24 +11,20 @@
                     ?>
 
                     <?= $this->form()->openTag($this->form); ?>
-                    <div class="form-group <?= $this->formElementErrors($this->form->get('name')) ? 'has-error' : ''; ?> has-feedback">
+                    <div class="form-group">
                         <?= $this->formText($this->form->get('name')); ?>
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         <?= $this->formElementErrors($this->form->get('name')); ?>
                     </div>
-                    <div class="form-group <?= $this->formElementErrors($this->form->get('email')) ? 'has-error' : ''; ?> has-feedback">
+                    <div class="form-group">
                         <?= $this->formEmail($this->form->get('email')); ?>
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         <?= $this->formElementErrors($this->form->get('email')); ?>
                     </div>
-                    <div class="form-group <?= $this->formElementErrors($this->form->get('password')) ? 'has-error' : ''; ?> has-feedback">
+                    <div class="form-group">
                         <?= $this->formPassword($this->form->get('password')); ?>
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         <?= $this->formElementErrors($this->form->get('password')); ?>
                     </div>
-                    <div class="form-group <?= $this->formElementErrors($this->form->get('verifyPassword')) ? 'has-error' : ''; ?> has-feedback">
+                    <div class="form-group">
                         <?= $this->formPassword($this->form->get('verifyPassword')); ?>
-                        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                         <?= $this->formElementErrors($this->form->get('verifyPassword')); ?>
                     </div>
                     <?= $this->formHidden($this->form->get('csrf')); ?>

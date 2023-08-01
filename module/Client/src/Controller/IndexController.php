@@ -22,9 +22,7 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $this->layout()->setTemplate('layout/layout');
-
         $row = $this->clientTable->getAll(['user_id' => $this->identity()->id]);
-
 
         return new ViewModel([
             'clients' => $row
@@ -37,6 +35,7 @@ class IndexController extends AbstractActionController
 
         if ($this->getRequest()->isPost()) {
             $this->clientForm->setData($this->getRequest()->getPost());
+
             if ($this->clientForm->isValid()) {
                 $data = $this->clientForm->getData();
                 $data['user_id'] = $this->identity()->id;
@@ -114,19 +113,17 @@ class IndexController extends AbstractActionController
     public function deleteAction()
     {
         $this->layout()->setTemplate('user/layout/layout');
-
         $id = $this->params()->fromRoute('id');
+
         if (empty($id)) {
             return $this->redirect()->toRoute('client', ['action' => 'index']);
         }
 
-        $request = $this->getRequest();
-
-        if ($request->isPost()) {
-            $del = $request->getPost('del');
+        if ($this->getRequest()->isPost()) {
+            $del = $this->getRequest()->getPost('del');
 
             if ($del == 'Yes') {
-                $id = $request->getPost('id');
+                $id = $this->getRequest()->getPost('id');
                 $this->clientTable->delete($id);
             }
 

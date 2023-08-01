@@ -11,3 +11,13 @@ body {
 .mt-5 {
     margin-top: 10em !important;
 }
+
+.form-control-feedback {
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    z-index: 2;
+    display: block;
+    text-align: center;
+    pointer-events: none;
+}

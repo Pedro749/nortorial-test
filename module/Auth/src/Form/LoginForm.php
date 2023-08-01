@@ -17,8 +17,8 @@ class LoginForm extends Form
         $this->setAttributes(['method' => 'POST']);
 
         $email = new Email('email');
+        $email->setLabel('Email');
         $email->setAttributes([
-            'placeholder' => 'Email',
             'class' => 'form-control',
             'maxlength' => 255
         ]);
@@ -26,8 +26,8 @@ class LoginForm extends Form
         $this->add($email);
 
         $password = new Password('password');
+        $password->setLabel('Senha');
         $password->setAttributes([
-            'placeholder' => 'Password',
             'class' => 'form-control',
             'maxlength' => 48
         ]);

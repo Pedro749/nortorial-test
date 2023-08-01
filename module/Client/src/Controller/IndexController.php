@@ -40,6 +40,8 @@ class IndexController extends AbstractActionController
             if ($this->clientForm->isValid()) {
                 $data = $this->clientForm->getData();
                 $data['user_id'] = $this->identity()->id;
+                unset($data['id']);
+
                 try {
                     $this->clientTable->save($data);
                     $this->flashMessenger()->addSuccessMessage(
@@ -67,6 +69,9 @@ class IndexController extends AbstractActionController
         $this->layout()->setTemplate('user/layout/layout');
         $id = $this->params()->fromRoute('id');
 
+        $this->clientForm->get('cpf_cnpj')
+            ->setAttributes(['readonly' => 'readonly']);
+
         if (empty($id) && !$this->getRequest()->isPost()) {
             return $this->redirect()->toRoute('client', ['action' => 'index']);
         }
@@ -93,18 +98,47 @@ class IndexController extends AbstractActionController
         }
 
         $this->clientForm->setData($this->getRequest()->getPost());
+        $this->clientForm->setValidationGroup(['name', 'rg_ie', 'uf', 'city', 'address']);
 
         if (!$this->clientForm->isValid()) {
             return $viewData;
         }
 
-        $data = $this->clientForm->getData();
-
-        var_dump($data);
-        die;
-
+        $data = (array) $this->clientForm->getData();
+        unset($data['cpf_cnpj']);
         $this->clientTable->save($data);
 
         return $this->redirect()->toRoute('client', ['action' => 'index']);
+    }
+
+    public function deleteAction()
+    {
+        $this->layout()->setTemplate('user/layout/layout');
+
+        $id = $this->params()->fromRoute('id');
+        if (empty($id)) {
+            return $this->redirect()->toRoute('client', ['action' => 'index']);
+        }
+
+        $request = $this->getRequest();
+
+        if ($request->isPost()) {
+            $del = $request->getPost('del');
+
+            if ($del == 'Yes') {
+                $id = $request->getPost('id');
+                $this->clientTable->delete($id);
+            }
+
+            return $this->redirect()->toRoute('client');
+        }
+
+        return [
+            'id' => $id,
+            'client' => $this->clientTable->getBy([
+                'id' => $id,
+                'user_id' => $this->identity()->id
+            ]),
+        ];
     }
 }

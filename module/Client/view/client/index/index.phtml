@@ -13,7 +13,7 @@
                 <?= $this->escapeHtml($client->name) ?>
                 <div>
                     <a href="<?= $this->url('client', ['controller' => 'Index', 'action' => 'edit', 'id' => $client->id]); ?>" class="btn btn-sm btn-outline-secondary mr-2">Editar</a>
-                    <button type="button" class="btn btn-sm btn-outline-danger">Excluir</button>
+                    <a href="<?= $this->url('client', ['controller' => 'Index', 'action' => 'delete', 'id' => $client->id]); ?>" class=" btn btn-sm btn-outline-danger">Excluir</a>
                 </div>
             </li>
         <?php

@@ -38,7 +38,7 @@ class IndexController extends AbstractActionController
 
             if ($this->protocolForm->isValid()) {
                 $data = $this->protocolForm->getData();
-
+                $data['user_id'] = $this->identity()->id;
                 unset($data['id']);
 
                 try {

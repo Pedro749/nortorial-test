@@ -16,15 +16,17 @@
         ->prependStylesheet($this->basePath('css/style.css'))
         ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
     ?>
+
+    <?= $this->inlineScript()
+        ->prependFile($this->basePath('js/jquery-3.3.1.min.js'))
+        ->prependFile($this->basePath('js/angular.js'))
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+    ?>
 </head>
 
 <body style="background: #3c4961;">
 
     <?= $this->content ?>
-    <?= $this->inlineScript()
-        ->prependFile($this->basePath('js/bootstrap.min.js'))
-        ->prependFile($this->basePath('js/jquery.min.js'))
-    ?>
 
 </body>
 

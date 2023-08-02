@@ -1,6 +1,6 @@
 <?php
 
-namespace Protocol\Model;
+namespace Application\Model;
 
 use Core\Model\CoreModelTrait;
 

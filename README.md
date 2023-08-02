@@ -18,4 +18,4 @@ Agora você deve configurar as credenciais do banco de dados dentro dos arquivos
 
 Posteriormente será necessário instalar os pacotes utilizados no projeto com o composer na versão 1, para fazer isso, você pode instalar o composer na sua máquina, ou então executar com o php, composer.phar, este está localizado em ```data/composer.phar```.
 
-Após esses passos, basta usar o comando ```composer serve```, ou ```php data/composer.phar serve```, para que seja criado um servidor localhost:8080 com o php, e pronto.
+Após isso, basta configurar um servidor apache com raiz em public do projeto, ou basta usar o comando ```composer serve```, ou ```php data/composer.phar serve```, para que seja criado um servidor localhost:8080 com o php, e pronto.

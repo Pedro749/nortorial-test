@@ -17,13 +17,13 @@ return [
     ],
     'view_helper_config' => [
         'form_element_errors' => [
-            'message_open_format' => '<ul class="list-unstyled"><li class="help-block text-danger ml-1">',
-            'message_separator_string' => '</li><li class="help-block text-danger">',
+            'message_open_format' => '<ul class="list-unstyled"><li class="help-block text-danger ml-1 pb-1">',
+            'message_separator_string' => '</li><li class="help-block text-danger pb-1">',
             'message_close_string' => '</li></ul>',
         ],
         'flashmessenger' => [
             'message_open_format'  => '<div%s>
-            <ul  class="list-unstyled text-center" ><li>',
+            <ul  class="list-unstyled text-center pb-1" ><li>',
             'message_close_string'  => '</li></ul></div>',
             'message_separator_string' => '</li><li>',
         ],

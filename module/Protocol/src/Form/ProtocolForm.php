@@ -35,6 +35,7 @@ class ProtocolForm extends Form
         $cpf_cnpj->setLabel('CPF/CNPJ');
         $cpf_cnpj->setAttributes([
             'class' => 'form-control',
+            'id' => 'cpf_cnpj',
             'maxlength' => 20
         ]);
 

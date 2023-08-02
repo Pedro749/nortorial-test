@@ -1,14 +1,13 @@
 <?php
-$title = 'Excluir Cliente';
+$title = 'Cliente';
 $this->headTitle($title);
-
 ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card text-center">
-                <h2 class="my-4"><?= $this->escapeHtml($title) ?></h2>
+                <h2 class="my-4"><?= $this->escapeHtml('Excluir ' . $title) ?></h2>
                 <p class="my-3">
                     Você realmente deseja excluir o cliente
                     "<?= $this->escapeHtml($client->name) ?>"?

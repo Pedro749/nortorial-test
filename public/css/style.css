@@ -17,3 +17,17 @@ body {
     text-align: center;
     pointer-events: none;
 }
+
+body.dashboard {
+    overflow: hidden;
+}
+
+.dashboard-aside {
+    height: 98vh !important;
+}
+
+@media (max-width: 760px) {
+    .dashboard-aside {
+        height: 100% !important;
+    }
+}

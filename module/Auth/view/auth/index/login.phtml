@@ -10,12 +10,12 @@
                     ?>
 
                     <?php echo $this->form()->openTag($this->form); ?>
-                    <div class="form-group <?= $this->formElementErrors($this->form->get('email')) ? ' has-error' : ''; ?> has-feedback">
+                    <div class="form-group">
                         <?= $this->formLabel($this->form->get('email')); ?>
                         <?php echo $this->formEmail($this->form->get('email')); ?>
                         <?php echo $this->formElementErrors($this->form->get('email')); ?>
                     </div>
-                    <div class="form-group <?= $this->formElementErrors($this->form->get('password')) ? ' has-error' : ''; ?> has-feedback">
+                    <div class="form-group">
                         <?= $this->formLabel($this->form->get('password')); ?>
                         <?php echo $this->formPassword($this->form->get('password')); ?>
                         <?php echo $this->formElementErrors($this->form->get('password')); ?>
@@ -25,7 +25,7 @@
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Logar</button>
                     </div>
                     <?php echo $this->form()->closeTag(); ?>
-                    <a href="<?= $this->url('user/default', ['controller' => 'Index', 'action' => 'register']); ?>" class="text-center">Criar registro</a>
+                    <a href="<?= $this->url('user/default', ['controller' => 'Index', 'action' => 'register']); ?>" class="text-center btn-block ">Criar registro</a>
                 </div>
             </div>
         </div>

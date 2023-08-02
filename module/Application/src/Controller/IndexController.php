@@ -8,6 +8,7 @@
 
 namespace Application\Controller;
 
+use Exception;
 use Client\Model\ClientTable;
 use Zend\View\Model\ViewModel;
 use Protocol\Model\ProtocolTable;
@@ -25,6 +26,21 @@ class IndexController extends AbstractActionController
     }
     public function indexAction()
     {
-        return new ViewModel();
+        try {
+            $client = $this->clientTable->findAll(['user_id' => $this->identity()->id]);
+            $clientCount = $client->count();
+
+            $protocol = $this->protocolTable->findAll(['user_id' => $this->identity()->id]);
+            $protocolCount = $protocol->count();
+        } catch (Exception $exception) {
+            $clientCount = 0;
+            $clientCount = 0;
+        }
+
+
+        return new ViewModel([
+            'clients' => $clientCount,
+            'protocols' => $protocolCount
+        ]);
     }
 }

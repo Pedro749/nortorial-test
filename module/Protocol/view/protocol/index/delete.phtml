@@ -1,0 +1,30 @@
+<?php
+$title = 'Excluir Protocolo';
+$this->headTitle($title);
+
+?>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card text-center">
+                <h2 class="my-4"><?= $this->escapeHtml($title) ?></h2>
+                <p class="my-3">
+                    Você realmente deseja excluir o protocolo do cliente
+                    "<?= $this->escapeHtml($protocol->applicant) ?>"?
+                </p>
+                <form action="<?= $this->url('protocol', ['action' => 'delete', 'id' => $id]) ?>" method="post">
+                    <div class="form-group">
+                        <input type="hidden" name="id" value="<?= $protocol->id ?>" />
+                        <button type="submit" class="btn btn-danger" name="del" value="Yes">
+                            Sim
+                        </button>
+                        <button type="submit" class="btn btn-success" name="del" value="No">
+                            Não
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

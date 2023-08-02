@@ -14,7 +14,7 @@ return [
             'client' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route' => '/client[/:action[/:id]]',
+                    'route' => '/client[/:action[/:id]][/]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action' => 'index',

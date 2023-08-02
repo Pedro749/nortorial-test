@@ -1,20 +1,20 @@
 <?php
 
-namespace Protocol\Controller\Factory;
+namespace Application\Controller\Factory;
 
-use Protocol\Form\ProtocolForm;
-use Protocol\Model\ProtocolTable;
-use Protocol\Controller\IndexController;
+use Application\Form\ProtocolForm;
+use Application\Model\ProtocolTable;
+use Application\Controller\ProtocolController;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
-class IndexControllerFactory implements FactoryInterface
+class ProtocolControllerFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $protocolForm = new ProtocolForm();
         $protocoltTable = $container->get(ProtocolTable::class);
 
-        return new IndexController($protocolForm, $protocoltTable);
+        return new ProtocolController($protocolForm, $protocoltTable);
     }
 }

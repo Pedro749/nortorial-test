@@ -1,6 +1,6 @@
 <?php
 
-namespace Client\Form\Filter;
+namespace Application\Form\Filter;
 
 use Zend\InputFilter\Input;
 use Zend\Validator\NotEmpty;

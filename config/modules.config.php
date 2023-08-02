@@ -34,4 +34,6 @@ return [
     'Core',
     'User',
     'Auth',
+    'Client',
+    'Protocol'
 ];

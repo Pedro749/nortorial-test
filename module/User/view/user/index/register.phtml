@@ -12,18 +12,22 @@
 
                     <?= $this->form()->openTag($this->form); ?>
                     <div class="form-group">
+                        <?= $this->formLabel($this->form->get('name')); ?>
                         <?= $this->formText($this->form->get('name')); ?>
                         <?= $this->formElementErrors($this->form->get('name')); ?>
                     </div>
                     <div class="form-group">
+                        <?= $this->formLabel($this->form->get('email')); ?>
                         <?= $this->formEmail($this->form->get('email')); ?>
                         <?= $this->formElementErrors($this->form->get('email')); ?>
                     </div>
                     <div class="form-group">
+                        <?= $this->formLabel($this->form->get('password')); ?>
                         <?= $this->formPassword($this->form->get('password')); ?>
                         <?= $this->formElementErrors($this->form->get('password')); ?>
                     </div>
                     <div class="form-group">
+                        <?= $this->formLabel($this->form->get('verifyPassword')); ?>
                         <?= $this->formPassword($this->form->get('verifyPassword')); ?>
                         <?= $this->formElementErrors($this->form->get('verifyPassword')); ?>
                     </div>

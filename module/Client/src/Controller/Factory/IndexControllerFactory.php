@@ -1,24 +1,22 @@
 <?php
 
-namespace Application\Controller\Factory;
+namespace Client\Controller\Factory;
 
-use Application\Form\ClientForm;
-use Application\Model\ClientTable;
+use Client\Form\ClientForm;
+use Client\Model\ClientTable;
 use Zend\Db\Adapter\Adapter;
-use Application\Controller\ClientController;
+use Client\Controller\IndexController;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
-class ClientControllerFactory implements FactoryInterface
+class IndexControllerFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $adapter = $container->get(Adapter::class);
-
-
         $clientForm = new ClientForm($adapter);
-
         $clientTable = $container->get(ClientTable::class);
-        return new ClientController($clientForm, $clientTable);
+
+        return new IndexController($clientForm, $clientTable);
     }
 }

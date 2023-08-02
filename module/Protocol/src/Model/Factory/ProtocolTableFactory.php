@@ -1,25 +1,25 @@
 <?php
 
-namespace Application\Model\Factory;
+namespace Protocol\Model\Factory;
 
-use Application\Model\Client;
-use Application\Model\ClientTable;
+use Protocol\Model\Protocol;
+use Protocol\Model\ProtocolTable;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
-class ClientTableFactory implements FactoryInterface
+class ProtocolTableFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $adapter = $container->get(Adapter::class);
         $resultSetPrototype = new ResultSet();
-        $resultSetPrototype->setArrayObjectPrototype(new Client());
+        $resultSetPrototype->setArrayObjectPrototype(new Protocol());
 
-        $tableGateway = new TableGateway('clients', $adapter, null, $resultSetPrototype);
+        $tableGateway = new TableGateway('protocols', $adapter, null, $resultSetPrototype);
 
-        return new ClientTable($tableGateway);
+        return new ProtocolTable($tableGateway);
     }
 }

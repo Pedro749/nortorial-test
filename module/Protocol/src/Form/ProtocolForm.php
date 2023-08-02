@@ -1,11 +1,11 @@
 <?php
 
-namespace Application\Form;
+namespace Protocol\Form;
 
 use Zend\Form\Form;
 use Zend\Form\Element\Text;
 use Zend\Form\Element\Csrf;
-use Application\Form\Filter\ProtocolFilter;
+use Protocol\Form\Filter\ProtocolFilter;
 use Zend\Form\Element\Hidden;
 use Zend\Form\Element\Textarea;
 

@@ -21,8 +21,8 @@ class UserForm extends Form
         $this->setAttributes(['method' => 'POST']);
 
         $name = new Text('name');
+        $name->setLabel('Nome');
         $name->setAttributes([
-            'placeholder' => 'Full name',
             'class' => 'form-control',
             'maxlength' => 120
         ]);
@@ -30,8 +30,9 @@ class UserForm extends Form
         $this->add($name);
 
         $email = new Email('email');
+        $email->setLabel('E-mail');
+
         $email->setAttributes([
-            'placeholder' => 'E-mail',
             'class' => 'form-control',
             'maxlength' => 255
         ]);
@@ -39,8 +40,8 @@ class UserForm extends Form
         $this->add($email);
 
         $password = new Password('password');
+        $password->setLabel('Senha');
         $password->setAttributes([
-            'placeholder' => 'Password',
             'class' => 'form-control',
             'maxlength' => 48
         ]);
@@ -48,8 +49,8 @@ class UserForm extends Form
         $this->add($password);
 
         $verifyPassword = new Password('verifyPassword');
+        $verifyPassword->setLabel('Confirmar Senha');
         $verifyPassword->setAttributes([
-            'placeholder' => 'Retype password',
             'class' => 'form-control',
             'maxlength' => 48
         ]);

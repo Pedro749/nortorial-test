@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Model;
+namespace Protocol\Model;
 
 use Core\Model\AbstractCoreModelTable;
 

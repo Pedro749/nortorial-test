@@ -1,12 +1,12 @@
 <?php
 
-namespace Application\Form;
+namespace Client\Form;
 
 use Zend\Form\Form;
 use Zend\Form\Element\Text;
 use Zend\Form\Element\Csrf;
 use  Zend\Db\Adapter\Adapter;
-use Application\Form\Filter\ClientFilter;
+use Client\Form\Filter\ClientFilter;
 use Zend\Form\Element\Hidden;
 
 class ClientForm extends Form

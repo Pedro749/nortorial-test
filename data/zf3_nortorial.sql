@@ -51,10 +51,10 @@ CREATE TABLE `protocols` (
   `applicant` varchar(120) DEFAULT NULL,
   `cpf_cnpj` varchar(20) DEFAULT NULL,
   `subject` text,
-  `client_id` int(10) unsigned zerofill DEFAULT NULL,
+  `user_id` int(10) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `client_id` (`client_id`),
-  CONSTRAINT `client_id` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `client_id` (`user_id`),
+  CONSTRAINT `user_id_protocol` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

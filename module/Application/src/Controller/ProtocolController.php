@@ -1,31 +1,31 @@
 <?php
 
-namespace Client\Controller;
+namespace Application\Controller;
 
 use Exception;
-use Client\Form\ClientForm;
-use Client\Model\ClientTable;
 use Zend\View\Model\ViewModel;
+use Application\Form\ProtocolForm;
+use Application\Model\ProtocolTable;
 use Zend\Mvc\Controller\AbstractActionController;
 
-class IndexController extends AbstractActionController
+class ProtocolController extends AbstractActionController
 {
-    private $clientForm;
-    private $clientTable;
+    private $protocolForm;
+    private $protocolTable;
 
-    public function __construct(ClientForm $clientForm, ClientTable $clientTable)
+    public function __construct(ProtocolForm $protocolForm, ProtocolTable $protocolTable)
     {
-        $this->clientForm = $clientForm;
-        $this->clientTable = $clientTable;
+        $this->protocolForm = $protocolForm;
+        $this->protocolTable = $protocolTable;
     }
 
     public function indexAction()
     {
         $this->layout()->setTemplate('layout/layout');
-        $row = $this->clientTable->getAll(['user_id' => $this->identity()->id]);
+        $row = $this->protocolTable->getAll(['user_id' => $this->identity()->id]);
 
         return new ViewModel([
-            'clients' => $row
+            'protocols' => $row
         ]);
     }
 
@@ -34,18 +34,19 @@ class IndexController extends AbstractActionController
         $this->layout()->setTemplate('user/layout/layout');
 
         if ($this->getRequest()->isPost()) {
-            $this->clientForm->setData($this->getRequest()->getPost());
+            $this->protocolForm->setData($this->getRequest()->getPost());
 
-            if ($this->clientForm->isValid()) {
-                $data = $this->clientForm->getData();
+            if ($this->protocolForm->isValid()) {
+                $data = $this->protocolForm->getData();
                 $data['user_id'] = $this->identity()->id;
+
                 unset($data['id']);
 
                 try {
-                    $this->clientTable->save($data);
+                    $this->protocolTable->save($data);
                     $this->flashMessenger()->addSuccessMessage(
                         sprintf(
-                            'Cliente cadastrado!'
+                            'Protocolo cadastrado!'
                         )
                     );
                 } catch (Exception $exception) {
@@ -59,7 +60,7 @@ class IndexController extends AbstractActionController
         }
 
         return new ViewModel([
-            'form' => $this->clientForm->prepare()
+            'form' => $this->protocolForm->prepare()
         ]);
     }
 
@@ -68,11 +69,8 @@ class IndexController extends AbstractActionController
         $this->layout()->setTemplate('user/layout/layout');
         $id = $this->params()->fromRoute('id');
 
-        $this->clientForm->get('cpf_cnpj')
-            ->setAttributes(['readonly' => 'readonly']);
-
         if (empty($id) && !$this->getRequest()->isPost()) {
-            return $this->redirect()->toRoute('client', ['action' => 'index']);
+            return $this->redirect()->toRoute('protocol', ['action' => 'index']);
         }
 
         try {
@@ -80,34 +78,33 @@ class IndexController extends AbstractActionController
                 $id = $this->getRequest()->getPost()->id;
             }
 
-            $client = $this->clientTable->getBy([
+            $protocol = $this->protocolTable->getBy([
                 'id' => $id,
                 'user_id' => $this->identity()->id
             ]);
         } catch (Exception $exception) {
-            return $this->redirect()->toRoute('client', ['action' => 'index']);
+            return $this->redirect()->toRoute('protocol', ['action' => 'index']);
         }
 
-        $this->clientForm->bind($client);
+        $this->protocolForm->bind($protocol);
 
-        $viewData = ['id' => $id, 'form' => $this->clientForm->prepare()];
+        $viewData = ['id' => $id, 'form' => $this->protocolForm->prepare()];
 
         if (!$this->getRequest()->isPost()) {
             return $viewData;
         }
 
-        $this->clientForm->setData($this->getRequest()->getPost());
-        $this->clientForm->setValidationGroup(['name', 'rg_ie', 'uf', 'city', 'address']);
+        $this->protocolForm->setData($this->getRequest()->getPost());
 
-        if (!$this->clientForm->isValid()) {
+        if (!$this->protocolForm->isValid()) {
             return $viewData;
         }
 
-        $data = (array) $this->clientForm->getData();
-        unset($data['cpf_cnpj']);
-        $this->clientTable->save($data);
+        $data = (array) $this->protocolForm->getData();
 
-        return $this->redirect()->toRoute('client', ['action' => 'index']);
+        $this->protocolTable->save($data);
+
+        return $this->redirect()->toRoute('protocol', ['action' => 'index']);
     }
 
     public function deleteAction()
@@ -116,7 +113,7 @@ class IndexController extends AbstractActionController
         $id = $this->params()->fromRoute('id');
 
         if (empty($id)) {
-            return $this->redirect()->toRoute('client', ['action' => 'index']);
+            return $this->redirect()->toRoute('protocol', ['action' => 'index']);
         }
 
         if ($this->getRequest()->isPost()) {
@@ -124,15 +121,15 @@ class IndexController extends AbstractActionController
 
             if ($del == 'Yes') {
                 $id = $this->getRequest()->getPost('id');
-                $this->clientTable->delete($id);
+                $this->protocolTable->delete($id);
             }
 
-            return $this->redirect()->toRoute('client');
+            return $this->redirect()->toRoute('protocol');
         }
 
         return [
             'id' => $id,
-            'client' => $this->clientTable->getBy([
+            'protocol' => $this->protocolTable->getBy([
                 'id' => $id,
                 'user_id' => $this->identity()->id
             ]),

@@ -23,7 +23,8 @@ $this->headTitle($title);
                     <?= $this->escapeHtml($protocol->cpf_cnpj) ?>
                 </div>
                 <div>
-                    <a href="<?= $this->url('protocol', ['controller' => 'Index', 'action' => 'edit', 'id' => $protocol->id]); ?>" class="btn btn-sm btn-outline-secondary mr-2">Editar</a>
+                    <a target="_blank" href="<?= $this->url('protocol', ['controller' => 'Index', 'action' => 'print', 'id' => $protocol->id]); ?>" class=" btn btn-sm btn-outline-secondary">Imprimir</a>
+                    <a href="<?= $this->url('protocol', ['controller' => 'Index', 'action' => 'edit', 'id' => $protocol->id]); ?>" class="btn btn-sm btn-outline-info mr-2">Editar</a>
                     <a href="<?= $this->url('protocol', ['controller' => 'Index', 'action' => 'delete', 'id' => $protocol->id]); ?>" class=" btn btn-sm btn-outline-danger">Excluir</a>
                 </div>
             </li>

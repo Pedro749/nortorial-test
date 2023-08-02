@@ -23,7 +23,8 @@
         "zendframework/zend-math": "^3.2",
         "zendframework/zend-crypt": "^3.3",
         "zendframework/zend-paginator": "^2.8",
-        "zendframework/zend-i18n-resources": "^2.6"
+        "zendframework/zend-i18n-resources": "^2.6",
+        "mpdf/mpdf": "^8.1"
     },
     "autoload": {
         "psr-4": {

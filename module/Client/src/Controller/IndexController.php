@@ -5,6 +5,7 @@ namespace Client\Controller;
 use Exception;
 use Client\Form\ClientForm;
 use Client\Model\ClientTable;
+use Zend\Json\Json;
 use Zend\View\Model\ViewModel;
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -144,5 +145,14 @@ class IndexController extends AbstractActionController
                 'user_id' => $this->identity()->id
             ]),
         ];
+    }
+
+    public function dataAction()
+    {
+        $data = $this->clientTable->findAll([
+            'user_id' => $this->identity()->id
+        ]);
+
+        die(Json::encode($data));
     }
 }

@@ -4,8 +4,10 @@ namespace Protocol;
 
 use Zend\Router\Http\Segment;
 use Protocol\Model\ProtocolTable;
+use Zend\View\Renderer\RendererInterface;
 use Protocol\Model\Factory\ProtocolTableFactory;
 use Protocol\Controller\Factory\IndexControllerFactory;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -13,7 +15,7 @@ return [
             'protocol' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route' => '/protocol[/:action[/:id]]',
+                    'route' => '/protocol[/:action[/:id]][/]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action' => 'index',
@@ -35,6 +37,7 @@ return [
         'template_map' => [
             'protocol/' => __DIR__ . '/../view/protocol/index/index.phtml',
             'protocol/edit' => __DIR__ . '/../view/protocol/index/edit.phtml',
+            'protocol/layout/print' => __DIR__ . '/../view/protocol/layout/print.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',
@@ -43,6 +46,7 @@ return [
     'service_manager' => [
         'factories' => [
             ProtocolTable::class => ProtocolTableFactory::class,
+            RendererInterface::class => InvokableFactory::class
         ]
     ],
 ];

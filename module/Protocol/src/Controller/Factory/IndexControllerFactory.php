@@ -5,6 +5,7 @@ namespace Protocol\Controller\Factory;
 use Protocol\Form\ProtocolForm;
 use Protocol\Model\ProtocolTable;
 use Protocol\Controller\IndexController;
+use Zend\View\Renderer\RendererInterface;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
@@ -14,7 +15,8 @@ class IndexControllerFactory implements FactoryInterface
     {
         $protocolForm = new ProtocolForm();
         $protocoltTable = $container->get(ProtocolTable::class);
+        $renderer = $container->get(RendererInterface::class);
 
-        return new IndexController($protocolForm, $protocoltTable);
+        return new IndexController($protocolForm, $protocoltTable, $renderer);
     }
 }

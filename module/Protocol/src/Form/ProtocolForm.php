@@ -26,6 +26,7 @@ class ProtocolForm extends Form
         $applicant->setLabel('Requerente');
         $applicant->setAttributes([
             'class' => 'form-control',
+            'id' => 'applicant',
             'maxlength' => 120
         ]);
 

@@ -21,7 +21,10 @@ $this->headTitle($title);
 
                     <div class="form-group">
                         <?= $this->formLabel($this->form->get('applicant')); ?>
-                        <?= $this->formText($this->form->get('applicant')); ?>
+                        <div class="input-group-prepend">
+                            <?= $this->formText($this->form->get('applicant')); ?>
+                            <span class="input-group-text btn btn-primary" id="inputGroupPrepend">&telrec;</span>
+                        </div>
                         <?= $this->formElementErrors($this->form->get('applicant')); ?>
                     </div>
                     <div class="form-group ">
@@ -52,8 +55,70 @@ $this->headTitle($title);
     </div>
 </div>
 
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Clientes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <table id="tabela" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Requerente</th>
+                            <th>CPF/CNPJ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+    fetch('/client/data/').then(function(response) {
+        return response.json()
+    }).then(function(response) {
+        $('#tabela').DataTable({
+            data: response,
+            autoWidth: false,
+            columns: [{
+                    data: 'name'
+                },
+                {
+                    data: 'cpf_cnpj'
+                }
+            ],
+            columnDefs: [{
+                "defaultContent": "-",
+                "targets": "_all"
+            }]
+        });
+    });
+
     $(document).ready(function() {
+        $('#protocol').attr('ng-non-bindable', '');
+
+        $('#tabela tbody').on('dblclick', 'tr', function() {
+            let applicant = $(this).find('td:eq(0)').text();
+            let cpf_cnpj = $(this).find('td:eq(1)').text();
+
+            $('#applicant')[0].value = applicant;
+            $('#cpf_cnpj')[0].value = cpf_cnpj;
+
+            $('#modal').modal('hide');
+        });
+
+        $('#inputGroupPrepend').click(function() {
+            $('#modal').modal('show');
+        });
+
         $('#cpf_cnpj').inputmask({
             mask: ['999.999.999-99', '99.999.999/9999-99'],
             keepStatic: true,

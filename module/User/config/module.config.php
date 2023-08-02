@@ -25,7 +25,7 @@ return [
                     'default' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route' => '[/:action]',
+                            'route' => '[/:action][/]',
                             'contraints' => [
                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ],

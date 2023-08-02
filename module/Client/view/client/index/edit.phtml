@@ -65,3 +65,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#cpf_cnpj').inputmask({
+            mask: ['999.999.999-99', '99.999.999/9999-99'],
+            keepStatic: true,
+            placeholder: ''
+        });
+
+        $('#rg_ie').inputmask({
+            mask: ['999999999', '99.999.999/9999-99'],
+            keepStatic: true,
+            placeholder: ''
+        });
+    });
+</script>

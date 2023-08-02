@@ -22,11 +22,18 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $this->layout()->setTemplate('layout/layout');
-        $row = $this->clientTable->getAll(['user_id' => $this->identity()->id]);
 
-        return new ViewModel([
-            'clients' => $row
-        ]);
+        $paginator = $this->clientTable->findAll([
+            'user_id' => $this->identity()->id
+        ], true);
+
+        $page = (int) $this->params()->fromQuery('page', 1);
+        $page = ($page < 1) ? 1 : $page;
+        $paginator->setCurrentPageNumber($page);
+
+        $paginator->setItemCountPerPage(10);
+
+        return new ViewModel(['paginator' => $paginator]);
     }
 
     public function registerAction()

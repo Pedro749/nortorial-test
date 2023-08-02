@@ -1,0 +1,47 @@
+<?php if ($this->pageCount) : ?>
+    <div>
+        <ul class="pagination text-center">
+            <!-- Previous page link -->
+            <?php if (isset($this->previous)) : ?>
+                <li>
+                    <a class="mx-3" href="<?= $this->url($this->route, [], ['query' => ['page' => $this->previous]]) ?>">
+                        &lt;&lt;
+                    </a>
+                </li>
+            <?php else : ?>
+                <li class="disabled">
+                    <a class="mx-3" href="#">
+                        &lt;&lt;
+                    </a>
+                </li>
+            <?php endif ?>
+
+            <?php foreach ($this->pagesInRange as $page) : ?>
+                <?php if ($page !== $this->current) : ?>
+                    <li>
+                        <a class="mx-3" href="<?= $this->url($this->route, [], ['query' => ['page' => $page]]) ?>">
+                            <?= $page ?>
+                        </a>
+                    </li>
+                <?php else : ?>
+                    <li class="active">
+                        <a class="mx-3" href="#"><?= $page ?></a>
+                    </li>
+                <?php endif ?>
+            <?php endforeach ?>
+            <?php if (isset($this->next)) : ?>
+                <li>
+                    <a class="mx-3" href="<?= $this->url($this->route, [], ['query' => ['page' => $this->next]]) ?>">
+                        &gt;&gt;
+                    </a>
+                </li>
+            <?php else : ?>
+                <li class="disabled">
+                    <a class="mx-3" href="#">
+                        &gt;&gt;
+                    </a>
+                </li>
+            <?php endif ?>
+        </ul>
+    </div>
+<?php endif ?>

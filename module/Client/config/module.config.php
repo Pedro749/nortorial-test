@@ -36,6 +36,7 @@ return [
         'template_map' => [
             'client/' => __DIR__ . '/../view/client/index/index.phtml',
             'client/edit' => __DIR__ . '/../view/client/index/edit.phtml',
+            'client/paginator' => __DIR__ . '/../view/client/index/paginator.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

@@ -18,9 +18,10 @@
     ?>
 
     <?= $this->inlineScript()
-        ->prependFile($this->basePath('js/jquery-3.3.1.min.js'))
-        ->prependFile($this->basePath('js/angular.js'))
         ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/jquery.inputmask.min.js'))
+        ->prependFile($this->basePath('js/jquery-3.3.1.min.js'))
+        ->prependFile($this->basePath('js/angular.min.js'))
     ?>
 </head>
 

@@ -36,6 +36,7 @@ class ClientForm extends Form
         $cpf_cnpj->setLabel('CPF/CNPJ');
         $cpf_cnpj->setAttributes([
             'class' => 'form-control',
+            'id' => 'cpf_cnpj',
             'maxlength' => 20
         ]);
 
@@ -45,6 +46,7 @@ class ClientForm extends Form
         $rg_ie->setLabel('RG/Inscrição Estadual');
         $rg_ie->setAttributes([
             'class' => 'form-control',
+            'id' => 'rg_ie',
             'maxlength' => 20
         ]);
 
